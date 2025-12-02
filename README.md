@@ -9,38 +9,34 @@
 
 ## Branches
 `git checkout main`
-This switches your working directory to the branch named `main`. Whatever files belong to that branch become your local files. If you had uncommitted changes that conflict, Git blocks the switch.
+Ini buat pindah branch, kalo mau bikin branch baru terus langsung pindah pakenya 'git checkout -b namabranch'
 
 `git pull`
-This is shorthand for “fetch remote changes and merge them into the branch you’re currently on.” It updates your local `main` to match `origin/main`. If there were changes on the server you didn’t have, they get merged in.
-
-`git checkout -b feature/whatever`
-`-b` literally means “create a new branch and switch to it.”
-This creates `feature/whatever` FROM the branch you were on (in this case, main).
-
-`git pull origin main`
-This means “pull the branch named main from the remote named origin.”
-This keeps your feature branch synced with the latest main so you don’t end up with monster conflicts later.
-Without the explicit syntax, `git pull` pulls the branch that your branch is tracking.
-Here you’re telling Git exactly which branch to merge into your current one.
+Ini buat fetch changes yang ada di repo terus di merge ke local branch yang lagi dipake. Kalau mau update feature branch yang ketinggalan dari mainnya yang di repo pakenya -> `git pull origin main`
 
 `git merge feature/whatever`
-This merges the commits from `feature/whatever` into whatever branch you're currently on. If you're on `main`, then main absorbs the changes. If both branches touched the same lines, Git triggers conflicts.
+Ini buat merge commit dari `feature/whatever` ke branch yang lagi dipake, kalo sekarang lagi pake branch `main`, dia bakal absorb commitnya dari `feature/whatever`.
 
 `git push --set-upstream origin branchname`
-Uploads your current branch’s commits to the remote that branch tracks. If it’s a new branch, GitHub creates it.
+Ini buat upload branch commits yang ada di local machine ke repo.
 
 `git branch -d feature/whatever`
-Deletes the branch locally.
-The `-d` means “delete if it’s already merged.”
-If you try deleting a branch that still has unmerged commits, Git will block it.
-If you want to force-delete, it’s `-D` (capital D).
+buat delete branch locally, kalo mau force delete pake `-D` bukan `-d`
 
 `git push origin --delete feature/whatever`
-Deletes the branch from the remote.
-This keeps GitHub clean instead of letting old branches rot forever.
+buat delete branch di repo
 
 `git reset --hard origin/main`
-This is the nuclear option.
-It rewrites your current branch so that its HEAD matches `origin/main` exactly, destroying all local commits and replacing your working files with whatever origin/main contains.
-If you had work in that branch, it’s gone unless you saved it somewhere else.
+Ini bakal rewrite/reset branch yang skrg dipake biar match `origin/main`
+
+`git merge main` (pas lagi di feature branch)
+dia bakal update branch dari main loakl yang paling baru
+
+`git merge feature/login` (while on main)
+kalo feature udah complete, perubahannya bakal di bawa ke main
+
+`git pull origin main` (while on your feature branch)
+ini bakal fetch + merge dari main
+
+`git push origin main`
+habis merge di push ke repo jadi ga di local doang
