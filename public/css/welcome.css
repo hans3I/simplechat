@@ -1,0 +1,40 @@
+.outerContainer {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 20%;
+    background: #f0f0f0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    flex: 1 1 auto;     /* ini yang bikin area grup ngisi atas dan tengah */
+}
+
+.group_items {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.userProfile {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 1rem;
+    box-sizing: border-box;
+}
