@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-  </head>
+</head>
   <header>
       <h1>Welcome to Simple Chat!</h1>
       <h3>
@@ -28,14 +27,15 @@
   </header>
 
   <body>
-      @auth
-          <label>You're logged in as {{ auth()->user()->username }} </label>
-      @endauth
-
-      @guest
-          <label>You're not logged in</label>
-      @endguest
+      <form method="POST" action="{{ route('register') }}">
+          @csrf
+          <input type="text" name="username" placeholder="username">
+          <input type="password" name="password" placeholder="password"
+          <br>
+          <button type="submit">Register</button>
+      </form>
   </body>
+
   <footer>
     <hr>
     <i>Dibuat oleh @hanselstevb, @deanfw</i>

@@ -11,7 +11,7 @@ class Member extends Model
 {
     protected $table = 'members';
 
-    public $timestamps = false; // karena kita pakai joined_at saja
+    public $timestamps = false;
 
     protected $fillable = [
         'user_id',

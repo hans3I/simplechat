@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class Authentication extends Controller
@@ -16,7 +16,7 @@ class Authentication extends Controller
     public function register(Request $request){
         $data = $request->validate([
             'username'=>'required|string|max:255|unique:users,username',
-            'password'=>'required|string|min:6|confirmed',
+            'password'=>'required|string|min:3',
         ]);
 
         $user = User::create([
@@ -26,7 +26,7 @@ class Authentication extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('conversations.index');
+        return redirect()->route('welcome');
     }
 
     public function show_login(){
@@ -45,7 +45,7 @@ class Authentication extends Controller
             ]);
         } else {
             $request->session()->regenerate();
-            return redirect()->route('conversations.index');
+            return redirect()->route('welcome');
         }
     }
 
